@@ -13,4 +13,46 @@ This project provides an automated Snakemake-based pipeline designed to streamli
 - Additional dependencies (e.g., bioinformatics tools and libraries) will be specified in the environment file (e.g., `environment.yml`).
 
 ## Getting Started
-To use this pipeline, clone the repository, install required dependencies, and configure the Snakemake workflow file to suit your dataset and computational environment.
+To use this pipeline, install required dependencies, and configure the Snakemake workflow file to suit your dataset and computational environment.
+
+```bash
+git clone https://github.com/yourusername/amr-detection-pipeline.git
+cd amr-detection-pipeline
+```
+### Set up the environments
+#### For Roary
+```bash
+conda create -n roary_env perl=5.26.2 python=3.9 roary=3.13.0 -c bioconda -c conda-forge
+conda activate roary_env
+conda install bioconda::snakemake=5.5.4
+```
+
+#### For Prokka
+```bash
+conda create -n prokka_env perl-bioperl prokka=1.14.6 python=3.9.15 snakemake=5.5.4 -c bioconda -c conda-forge
+conda activate prokka_env
+conda install conda-forge::ncbi-datasets-cli
+conda install -y -c conda-forge -c bioconda --strict-channel-priority ncbi-amrfinderplus
+```
+
+#### Download
+amrfinder -u
+
+#### Configure the pipeline
+Open the config.yaml file and update the following parameters as needed:
+
+- **input_path**: Path to your input data (e.g., genomic FASTA files).
+- **output_path**: Desired output directory.
+
+#### Run the pipeline
+Execute the Snakemake workflow by specifying the number of cores.
+
+```bash
+snakemake -s <snakefile> --cores <number_of_cores>
+```
+
+#### Output
+The pipeline generates detailed reports and visualizations of detected AMR genes, including:
+
+AMR gene presence/absence matrices.
+Summary tables and figures for further analysis.
