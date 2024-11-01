@@ -8,9 +8,12 @@ This project provides an automated Snakemake-based pipeline designed to streamli
 - **Reproducibility**: Each step in the analysis is reproducible and well-documented, making the pipeline suitable for long-term studies and collaboration.
 
 ## Requirements
-- **Snakemake** (version X.X.X)
-- **Python** (version 3.X or higher)
-- Additional dependencies (e.g., bioinformatics tools and libraries) will be specified in the environment file (e.g., `environment.yml`).
+- **Perl** (version 5.26.2)
+- **Python** (version 3.7.12)
+- **Roary** (version 3.13.0)
+- **Prokka** (version 1.14.6)
+- **Snakemake** (version 5.5.4)
+- Additional bioinformatics tools: perl-bioperl, ncbi-datasets-cli, ncbi-amrfinderplus, seaborn, biopython
 
 ## Getting Started
 To use this pipeline, install required dependencies, and configure the Snakemake workflow file to suit your dataset and computational environment.
