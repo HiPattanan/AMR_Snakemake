@@ -12,31 +12,39 @@ This project provides an automated Snakemake-based pipeline designed to streamli
 - **Python** (version 3.X or higher)
 - Additional dependencies (e.g., bioinformatics tools and libraries) will be specified in the environment file (e.g., `environment.yml`).
 
-## Getting Started
-To use this pipeline, install required dependencies, and configure the Snakemake workflow file to suit your dataset and computational environment.
+## Set up the Environments
+To streamline the pipeline’s requirements, you can set up a single Conda environment containing all necessary packages.
 
-```bash
-git clone https://github.com/yourusername/amr-detection-pipeline.git
-cd amr-detection-pipeline
-```
-### Set up the environments
-#### For Roary
-```bash
-conda create -n roary_env perl=5.26.2 python=3.9 roary=3.13.0 -c bioconda -c conda-forge
-conda activate roary_env
-conda install bioconda::snakemake=5.5.4
-```
+1. **Create the Conda environment**
+   Run the following command to create an environment named `amr_pipeline_env`:
 
-#### For Prokka
-```bash
-conda create -n prokka_env perl-bioperl prokka=1.14.6 python=3.9.15 snakemake=5.5.4 -c bioconda -c conda-forge
-conda activate prokka_env
-conda install conda-forge::ncbi-datasets-cli
-conda install -y -c conda-forge -c bioconda --strict-channel-priority ncbi-amrfinderplus
-```
+  ```bash
+  conda create -n amr_pipeline_env perl=5.26.2 python=3.9 roary=3.13.0 prokka=1.14.6 perl-bioperl snakemake=5.5.4 -c bioconda -c conda-forge
+  ```
 
-#### Download
-amrfinder -u
+2. **Activate the environment**
+  After creating the environment, activate it with:
+
+  ```bash
+  conda activate amr_pipeline_env
+  ```
+
+3. **Install additional dependencies**
+   Once the environment is active, install the remaining tools with the following commands:
+
+  ```bash
+  conda install -c conda-forge ncbi-datasets-cli
+  conda install -y -c conda-forge -c bioconda --strict-channel-priority ncbi-amrfinderplus
+  conda install -c conda-forge seaborn
+  conda install -c conda-forge biopython
+  ```
+
+4. **Download and Update AMRFinderPlus Database**:
+   Once all packages are installed, update the AMRFinderPlus database to ensure it has the latest AMR gene information. Run the following command:
+
+  ```bash
+  amrfinder -u
+  ```
 
 #### Configure the pipeline
 Open the config.yaml file and update the following parameters as needed:
