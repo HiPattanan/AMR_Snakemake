@@ -21,49 +21,50 @@ To streamline the pipeline’s requirements, you can set up a single Conda envir
 1. **Create the Conda environment**
    Run the following command to create an environment named `amr_pipeline_env`:
 
-  ```bash
-  conda create -n amr_pipeline_env perl=5.26.2 python=3.9 roary=3.13.0 prokka=1.14.6 perl-bioperl snakemake=5.5.4 -c bioconda -c conda-forge
-  ```
+   ```bash
+   conda create -n amr_pipeline_env perl=5.26.2 python=3.7.12 roary=3.13.0 -c bioconda -c conda-forge
+   conda install perl-bioperl prokka=1.14.6 snakemake=5.5.4 -c bioconda -c conda-forge
+   ```
 
 2. **Activate the environment**
   After creating the environment, activate it with:
 
-  ```bash
-  conda activate amr_pipeline_env
-  ```
+   ```bash
+   conda activate amr_pipeline_env
+   ```
 
 3. **Install additional dependencies**
    Once the environment is active, install the remaining tools with the following commands:
 
-  ```bash
-  conda install -c conda-forge ncbi-datasets-cli
-  conda install -y -c conda-forge -c bioconda --strict-channel-priority ncbi-amrfinderplus
-  conda install -c conda-forge seaborn
-  conda install -c conda-forge biopython
-  ```
+   ```bash
+   conda install -c conda-forge ncbi-datasets-cli
+   conda install -y -c conda-forge -c bioconda --strict-channel-priority ncbi-amrfinderplus
+   conda install -c conda-forge seaborn
+   conda install -c conda-forge biopython
+   ```
 
-4. **Download and Update AMRFinderPlus Database**:
+4. **Download and Update AMRFinderPlus Database**
    Once all packages are installed, update the AMRFinderPlus database to ensure it has the latest AMR gene information. Run the following command:
 
-  ```bash
-  amrfinder -u
-  ```
+   ```bash
+   amrfinder -u
+   ```
 
-#### Configure the pipeline
+### Configure the pipeline
 Open the config.yaml file and update the following parameters as needed:
 
-- **input_path**: Path to your input data (e.g., genomic FASTA files).
+- **input_name**: Path to your input data (ID of Gene .txt file).
 - **output_path**: Desired output directory.
 
-#### Run the pipeline
+### Run the pipeline
 Execute the Snakemake workflow by specifying the number of cores.
 
 ```bash
 snakemake -s <snakefile> --cores <number_of_cores>
 ```
 
-#### Output
+### Output
 The pipeline generates detailed reports and visualizations of detected AMR genes, including:
 
-AMR gene presence/absence matrices.
-Summary tables and figures for further analysis.
+- AMR gene presence/absence matrices.
+- Summary tables and figures for further analysis.
