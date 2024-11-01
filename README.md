@@ -12,7 +12,10 @@ This project provides an automated Snakemake-based pipeline designed to streamli
 - **Python** (version 3.X or higher)
 - Additional dependencies (e.g., bioinformatics tools and libraries) will be specified in the environment file (e.g., `environment.yml`).
 
-## Set up the Environments
+## Getting Started
+To use this pipeline, install required dependencies, and configure the Snakemake workflow file to suit your dataset and computational environment.
+
+### Set up the Environments
 To streamline the pipeline’s requirements, you can set up a single Conda environment containing all necessary packages.
 
 1. **Create the Conda environment**
