@@ -25,32 +25,32 @@ To streamline the pipeline’s requirements, you can set up a single Conda envir
    Run the following command to create an environment named `amr_pipeline_env`:
 
    ```bash
-   conda create -n amr_pipeline_env perl=5.26.2 python=3.7.12 roary=3.13.0 -c bioconda -c conda-forge
-   conda install perl-bioperl prokka=1.14.6 snakemake=5.5.4 -c bioconda -c conda-forge
+   $ conda create -n amr_pipeline_env perl=5.26.2 python=3.7.12 roary=3.13.0 -c bioconda -c conda-forge
+   $ conda install perl-bioperl prokka=1.14.6 snakemake=5.5.4 -c bioconda -c conda-forge
    ```
 
 2. **Activate the environment**
   After creating the environment, activate it with:
 
    ```bash
-   conda activate amr_pipeline_env
+   $ conda activate amr_pipeline_env
    ```
 
 3. **Install additional dependencies**
    Once the environment is active, install the remaining tools with the following commands:
 
    ```bash
-   conda install -c conda-forge ncbi-datasets-cli
-   conda install -y -c conda-forge -c bioconda --strict-channel-priority ncbi-amrfinderplus
-   conda install -c conda-forge seaborn
-   conda install -c conda-forge biopython
+   $ conda install -c conda-forge ncbi-datasets-cli
+   $ conda install -y -c conda-forge -c bioconda --strict-channel-priority ncbi-amrfinderplus
+   $ conda install -c conda-forge seaborn
+   $ conda install -c conda-forge biopython
    ```
 
 4. **Download and Update AMRFinderPlus Database**
    Once all packages are installed, update the AMRFinderPlus database to ensure it has the latest AMR gene information. Run the following command:
 
    ```bash
-   amrfinder -u
+   $ amrfinder -u
    ```
 
 ### Configure the pipeline
@@ -63,7 +63,7 @@ Open the config.yaml file and update the following parameters as needed:
 Execute the Snakemake workflow by specifying the number of cores.
 
 ```bash
-snakemake -s <snakefile> --cores <number_of_cores>
+$ snakemake -s <snakefile> --cores <number_of_cores>
 ```
 
 ### Output
