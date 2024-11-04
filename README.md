@@ -56,7 +56,7 @@ To streamline the pipeline’s requirements, you can set up a single Conda envir
 ### Configure the pipeline
 Open the config.yaml file and update the following parameters as needed:
 
-- **input_name**: Path to your input data (ID of Gene .txt file).
+- **input_name**: Path to your input data (List of Gene ID .txt file).
 - **output_path**: Desired output directory.
 
 ### Run the pipeline
