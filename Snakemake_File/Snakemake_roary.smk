@@ -3,13 +3,13 @@ configfile: "path/to/config.yml"
 DIR = config['AMR_config']['DIR']
 
 rule roary:
-  input:
-    "{dir}/renamed_gff".format(dir=DIR)
-  output:
-    directory("{dir}/roary".format(dir=DIR)),
+	input:
+		"{dir}/renamed_gff".format(dir=DIR)
+	output:
+		directory("{dir}/roary".format(dir=DIR)),
 		"{dir}/roary.bash".format(dir=DIR)
-  params:
-    script= "{dir}/roary_plots.py".format(dir=DIR)
+	params:
+		script= "{dir}/roary_plots.py".format(dir=DIR)
 	shell:
 		"""
 		mkdir -p {output[0]}/
