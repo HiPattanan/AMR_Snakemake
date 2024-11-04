@@ -1,4 +1,6 @@
-DIR = "/ctg_data/data/AMR/b.pseudomallei/cc_thai"
+configfile: "path/to/config.yml"
+
+DIR = config['AMR_config']['DIR']
 
 rule roary:
   input:
