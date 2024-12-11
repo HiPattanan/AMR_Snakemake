@@ -79,9 +79,10 @@ The pipeline generates detailed reports and visualizations of detected AMR genes
 - meta data (locations)
 | Assembly  | Province |
 | ------------- | ------------- |
-| GCA_001195065.2_tha  | Thailand  |
-| GCA_001209045.2_ma  | Malaysia  |
+| GCA_001195065.2_tha | Thailand  |
+| GCA_001209045.2_ma | Malaysia  |
 | GCA_963561015.1 | Udonthani |
+
 - amr data
 Assembly	aac6-III	blaPEN-I	blaOXA-57	blaOXA-59	blaOXA
 GCA_001195065.2_tha	Y	Y	Y	N	N
