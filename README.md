@@ -13,6 +13,8 @@ This project provides an automated Snakemake-based pipeline designed to streamli
 - **Roary** (version 3.13.0)
 - **Prokka** (version 1.14.6)
 - **Snakemake** (version 5.5.4)
+- **MLST**
+- **AMRFinderPlus**
 - Additional bioinformatics tools: perl-bioperl, ncbi-datasets-cli, ncbi-amrfinderplus, seaborn, biopython
 
 ## Getting Started
