@@ -1,0 +1,90 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+plot(cars)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
+```{r}
+#Step1: Load necessary libraries
+library(ggtree)
+library(ggplot2)
+library(readxl)
+library(ape)
+library(dplyr)
+
+
+#Step 2: get data and preparing data
+#Loads a phylogenetic tree from a Newick file
+vshv.tree <- read.tree("Path to Tree file (.newick)")
+
+#Loads metadata contains location information (e.g. provinces)
+meta <- read_xlsx("Path to metadata (location)")
+
+#Loads a tab-delimited file containing AMR data
+amr <- read.table("Path to amr", sep='\t', stringsAsFactor=F, header=T)
+
+#Remove duplicates sample (assembly accession number)
+amr <- amr[!duplicated(amr$Assembly), ]
+
+#Converts assembly column into row names 
+amr1 <- column_to_rownames(amr, var = "Assembly")
+colnames(amr1) <- sub("\\.$", "", colnames(amr1))
+#Preview data
+head(amr1) 
+
+#Tree Manipulation
+# Midpoint root the tree
+vshv.tree <- midpoint(vshv.tree)
+
+#step3: Plot tree with location
+#Visualizes the tree in a circular layout and links locations data (meta) to tree tips and colors the tips based on province
+t1 <- ggtree(vshv.tree,layout ="circular") %<+% meta + 
+  geom_tippoint(aes(color=province), size = 8) +                 
+  scale_color_manual(values=c("Singapore"="green",     
+                              "Malaysia"="darkorchid1",
+                              "Australia"="grey",
+                              "Udonthani"="salmon4",    
+                              "KhonKaen"="lightsalmon",
+                              "MahaSarakham"="yellow",
+                              "Mukdahan"="orange",     
+                              "NakhonPhanom"="indianred1",
+                              "RoiET"="firebrick1",
+                              "Buriram"="cyan2",
+                              "Sisaket"="lightsteelblue2",     
+                              "Surin"="blue",
+                              "Ubon"="dodgerblue1",
+                              "Thailand"='aquamarine'), name = "Province")
+
+# Set bootstrap support
+t1$data$bootstrap <- '1'
+t1$data[which(t1$data$SH_aLRT >= 60 & t1$data$UFboot >= 60),]$bootstrap <- '1'
+
+#Step4: Add AMR data as a heatmap
+final_plot <- gheatmap(t1,  as.data.frame(amr1), offset=0, width=0.1, font.size=4, 
+        colnames_angle=-65, hjust=-0.001) + scale_fill_manual(breaks=c("Y", "N"), 
+        values=c("lightcoral", "lightgreen"), name="AMR")
+
+#Step5: Adjust Axes        
+final_plot + ylim(-1.4, NA)
+coord_cartesian(clip = "off")
+final <- final_plot + ggtree::vexpand(.1, -1)
+
+final
+
+#Step6: Save the final plot
+ggsave("Path to save plot", plot = final, width = 40, height = 40)
+```
+
