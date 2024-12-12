@@ -75,7 +75,7 @@ The pipeline generates detailed reports and visualizations of detected AMR genes
 
 
 ### Phylogenetic analysis
-Phylogenetic analysis involves studying the evolutionary relationships between organisms. Our analysis uses R programming to visualize and analyze the connections between phylogenetic trees, geographic locations, and antimicrobial resistance (AMR) gene.
+Phylogenetic analysis involves studying the evolutionary relationships between organisms. Our analysis uses R programming to visualize and analyze the connections between phylogenetic tree, geographic locations, and antimicrobial resistance (AMR) gene.
 
 Data Requirements
 To conduct the analysis, we need three types of data:
@@ -97,4 +97,6 @@ AMR data indicates the presence (Y) or absence (N) of specific antimicrobial res
 | GCA_001195065.2_tha |	Y	| Y |	Y |	N |	N |
 | GCA_001209045.2_ma	| Y |	Y	| N	| Y	| N |
 | GCA_963561015.1 | Y	| Y	| N	| Y	| N |
+
+output
 
