@@ -73,7 +73,6 @@ The pipeline generates detailed reports and visualizations of detected AMR genes
 
 - AMR gene presence/absence matrices.
 - Summary tables and figures for further analysis.
-- 
 
 ### Phylogenetic analysis
 - meta data (locations)
