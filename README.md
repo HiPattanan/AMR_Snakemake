@@ -73,8 +73,15 @@ The pipeline generates detailed reports and visualizations of detected AMR genes
 - AMR gene presence/absence matrices.
 - Summary tables and figures for further analysis.
 
+
 ### Phylogenetic analysis
-- meta data (locations)
+Phylogenetic analysis involves studying the evolutionary relationships between organisms. Our analysis uses R programming to visualize and analyze the connections between phylogenetic trees, geographic locations, and antimicrobial resistance (AMR) gene.
+
+Data Requirements
+To conduct the analysis, we need three types of data:
+1. Phylogenetic tree (format: .newick file, output from Roary)
+2. Metadata (Locations)
+Metadata includes information about the geographic origin of the samples. Below is an example dataset:
 
 | Assembly               | Province   |
 | -------------------- | :--------: |
@@ -82,7 +89,8 @@ The pipeline generates detailed reports and visualizations of detected AMR genes
 | GCA_001209045.2_ma     | Malaysia   |
 | GCA_963561015.1        | Udonthani  |
 
-- AMR data
+3. AMR Data (Recommended format: .txt file)
+AMR data indicates the presence (Y) or absence (N) of specific antimicrobial resistance genes in the samples. Example data:
   
 | Assembly               |	aac6-III |	blaPEN-I	| blaOXA-57	| blaOXA-59	| blaOXA |
 | -------------------- | :--------: | :--------: | :--------: | :--------: | :--------: |
