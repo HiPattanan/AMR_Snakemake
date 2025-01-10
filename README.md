@@ -96,11 +96,11 @@ AMR data indicates the presence (Y) or absence (N) of specific antimicrobial res
 | Assembly               |	aac6-III |	blaPEN-I	| blaOXA-57	| blaOXA-59	| blaOXA |
 | -------------------- | :--------: | :--------: | :--------: | :--------: | :--------: |
 | GCA_001195065.2_tha |	Y	| Y |	Y |	N |	N |
-| GCA_001209045.![Uploading plot_tree.svg…]()
-2_ma	| Y |	Y	| N	| Y	| N |
+| GCA_001209045.2_ma	| Y |	Y	| N	| Y	| N |
 | GCA_963561015.1 | Y	| Y	| N	| Y	| N |
 
 # Output
 The Phylogenetic analysis generates visualizations of phylogenetic tree, geographic locations, and antimicrobial resistance (AMR) gene
+
 ![Screenshot 2025-01-10 143236](https://github.com/user-attachments/assets/3453b9d9-6abe-48a0-b88d-c6b2378e8695)
 
