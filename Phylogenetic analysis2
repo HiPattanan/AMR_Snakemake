@@ -1,0 +1,60 @@
+vshv.tree <- read.tree("path to newick file")
+meta <- read_xlsx("D://care/B.pseudomallei/TBN/move/mlst.xlsx", sheet="loc_st")
+
+Amr <- read.table("d://care/B.pseudomallei/TBN/move/amr2.txt", sep='\t', stringsAsFactor=F,header = T) 
+#typeof(genotype1)
+
+Amr <- Amr[!duplicated(Amr$Assembly), ]
+Amr1 <- column_to_rownames(Amr, var = "Assembly")
+
+colnames(Amr1) <- sub("\\.$", "", colnames(Amr1))
+head(Amr1)
+
+mlst <- read_xlsx("D://care/B.pseudomallei/TBN/move/mlst.xlsx")
+mlst
+
+# Midpoint root the tree
+vshv.tree <- midpoint(vshv.tree)
+
+
+t1 <- ggtree(vshv.tree,layout ="circular") %<+% meta + 
+  geom_tippoint(aes(color=province), size = 8) +                 
+  scale_color_manual(values=c("Singapore"="green",     
+                              "Malaysia"="darkorchid1",
+                              "Australia"="grey",
+                              "Udonthani"="salmon4",    
+                              "KhonKaen"="lightsalmon",
+                              "MahaSarakham"="yellow",
+                              "Mukdahan"="orange",     
+                              "NakhonPhanom"="indianred1",
+                              "RoiET"="firebrick1",
+                              "Buriram"="cyan2",
+                              "Sisaket"="lightsteelblue2",     
+                              "Surin"="blue",
+                              "Ubon"="dodgerblue1",
+                              "Thailand"='aquamarine'), name = "Province")+
+  geom_tiplab(aes(label=ST),linetype=NA, size=3, offset=0,colnames_angle=-65) 
+
+#geom_tiplab(aes(label=ST), align=T, linetype=NA, size=2, offset=0.01,colnames_angle=-65, hjust=0.1)
+
+# Set bootstrap support
+t1$data$bootstrap <- '1'
+t1$data[which(t1$data$SH_aLRT >= 60 & t1$data$UFboot >= 60),]$bootstrap <- '1'
+
+
+plot1 <- gheatmap(t1,  as.data.frame(Amr1), offset=0.02, width=0.1, font.size=4, 
+        colnames_angle=-65, hjust=-0.001) + scale_fill_manual(breaks=c("Y", "N"), 
+        values=c("lightcoral", "lightgreen"), name="AMR")
+
+
+
+
+        
+final_plot <- plot1 + ylim(-1.4, NA)
+coord_cartesian(clip = "off")
+final <- final_plot + ggtree::vexpand(.1, -1)
+
+final
+
+# Save or display the final plot
+ggsave("D://care/B.pseudomallei/TBN/move/plot_tree_test1.svg", plot = final, width = 40, height = 40)
