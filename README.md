@@ -45,6 +45,7 @@ To streamline the pipeline’s requirements, you can set up a single Conda envir
    $ conda install -y -c conda-forge -c bioconda --strict-channel-priority ncbi-amrfinderplus
    $ conda install -c conda-forge seaborn
    $ conda install -c conda-forge biopython
+   $ conda install -c bioconda mlst
    ```
 
 4. **Download and Update AMRFinderPlus Database**
