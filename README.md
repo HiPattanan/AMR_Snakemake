@@ -98,5 +98,3 @@ AMR data indicates the presence (Y) or absence (N) of specific antimicrobial res
 | GCA_001209045.2_ma	| Y |	Y	| N	| Y	| N |
 | GCA_963561015.1 | Y	| Y	| N	| Y	| N |
 
-output
-
