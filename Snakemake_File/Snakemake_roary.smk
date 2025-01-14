@@ -26,3 +26,15 @@ rule roary:
 		chmod +x {output[1]}
 		sbatch {output[1]}
 		"""
+
+rule run_mlst:
+	input:
+		"{dir}/{name}/out_prokka".format(dir=DIR, name=NAMES)
+	output:
+		"{dir}/{name}/mlst_results.tsv".format(dir=DIR, name=NAMES)
+	shell:
+		"""
+		for f in {input}/*/GCA*.fna; do 
+			b=$(basename "$f" .fna); mlst $f > {output};
+		done
+		"""
