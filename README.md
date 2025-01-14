@@ -64,9 +64,18 @@ Open the config.yaml file and update the following parameters as needed:
 ### Run the pipeline
 Execute the Snakemake workflow by specifying the number of cores.
 
+- Step 1: Run the first Snakemake file (Snakemake_step1) to download genomic data and perform annotation.
+- Step 2: Run the second Snakemake file (Snakemake_step2) to perform pangenome analysis and sequence typing.
+
 ```bash
 $ snakemake -s <snakefile> --cores <number_of_cores>
 ```
+
+**Notes**
+- Replace <number_of_cores> with the number of CPU cores you want to use.
+- Replace <snakefile> with the Snakemake file (Snakemake_step1 or Snakemake_step2).
+- Ensure input data paths and configuration files (if any) are correctly set up before execution.
+- Output files will be organized in directories corresponding to each step.
 
 ### Output
 The pipeline generates detailed reports and visualizations of detected AMR genes, including:
