@@ -67,8 +67,8 @@ rule prokka_and_rename_gff:
 		# Prokka command for genome annotation
 		echo 'for F in {input}/GCA*.fna; do N=$(basename $F .fna);' >> {output[2]}
 		echo 'prokka --kingdom Bacteria --genus burkholderia --locustag $N --outdir {output[1]}/$N --prefix $N $F; done ' >> {output[2]}
-
 		echo 'wait' >> {output[2]}
+
 		# Rename and copy gff files
 		echo 'for G in {output[1]}/*/GCA*.gff; do N=$(basename $G .gff); BASE_NAME=$(echo $N | cut -d"_" -f1-2); cp $G {output[0]}/$BASE_NAME-{NAMES}.gff; done;' >> {output[2]}
 
