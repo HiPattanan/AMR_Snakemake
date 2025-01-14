@@ -64,7 +64,7 @@ Open the config.yaml file and update the following parameters as needed:
 ### Run the pipeline
 Execute the Snakemake workflow by specifying the number of cores.
 
-- Step 1: Run the first Snakemake file (Snakemake_step1) to download genomic data and perform annotation.
+- Step 1: Run the first Snakemake file (Snakemake_step1) to download genomic data and perform annotation. (Please wait until Step 1 is fully completed before proceeding to Step 2)
 - Step 2: Run the second Snakemake file (Snakemake_step2) to perform pangenome analysis and sequence typing.
 
 ```bash
